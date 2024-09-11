@@ -97,14 +97,15 @@ const SideBar = ({setOpenSideMenu}) => {
             <div className={Style.sideBar_box}>
                 <Image src={images.logo} alt="logo"  width={150} height={150} />
                 <p>Discover the most outstanding articles on all the topics of NFT & your own stories and share them</p>
+                <div className={Style.sideBar_social}>
+                    <a href="#"><TiSocialFacebook/></a>
+                    <a href="#"><TiSocialLinkedin/></a>
+                    <a href="#"><TiSocialTwitter/></a>
+                    <a href="#"><TiSocialYoutube/></a>
+                    <a href="#"><TiSocialInstagram/></a>
+                </div>
             </div>
-            <div className={Style.sideBar_social}>
-                <a href="#"><TiSocialFacebook/></a>
-                <a href="#"><TiSocialLinkedin/></a>
-                <a href="#"><TiSocialTwitter/></a>
-                <a href="#"><TiSocialYoutube/></a>
-                <a href="#"><TiSocialInstagram/></a>
-            </div>
+            
             <div className={Style.sideBar_menu}>
                 <div>
                     <div className={Style.sideBar_menu_box} onClick={()=>openDiscoverMenu()}>
@@ -138,8 +139,8 @@ const SideBar = ({setOpenSideMenu}) => {
                 </div>
             </div>
             <div className={Style.sideBar_button}>
-                <Button btnText="Create"/>
-                <Button btnText="Connect Wallet"/>
+                <Button btnText="Create" handleClick={()=>{}}/>
+                <Button btnText="Connect Wallet" handleClick={()=>{}}/>
             </div>
         </div>
     )
