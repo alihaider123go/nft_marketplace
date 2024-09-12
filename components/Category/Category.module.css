@@ -6,7 +6,7 @@
 .category{
     padding: 4rem 0;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 2rem;
 }
 
@@ -25,6 +25,8 @@
 
 .category_box_img{
     border-radius: 1rem;
+    max-width: 100%;
+    object-fit: cover;
 }
 
 .category_box_title{
