@@ -1,0 +1,77 @@
+
+
+.Brand{
+    width: 100%;
+    margin-top: 10rem;
+    margin-bottom: 7rem;
+}
+
+.Brand_box{
+    width: 80%;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    gap: 5rem;
+    align-items: center;
+    padding:  8rem 0;
+}
+
+.Brand_box_left h1{
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.Brand_box_left p{
+    font-size: 1.3rem;
+}
+
+.Brand_box_left_btn{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    }
+
+.Brand_box_right_image{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+@media screen and (min-device-width: 320px) and (max-device-width: 768px){
+    .Brand_box{
+        width: 90%;
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+    
+    .Brand_box_left h1{
+        font-size: 2rem;
+    }
+    
+    .Brand_box_right_image{
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px){
+    .Brand_box{
+        width: 90%;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem;
+    }
+    
+    .Brand_box_left h1{
+        font-size: 2rem;
+    }
+
+    .Brand_box_right_image{
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}

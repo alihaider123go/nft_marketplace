@@ -1,7 +1,8 @@
 import React from 'react'
 
 import Style from '../styles/index.module.css'
-import { HeroSection,Service,BigNFTSlider,Subscribe,Title,Category,Filter,NFTCard,Collection,FollowerTab,AudioLive,Slider } from '@/components/componentsIndex'
+import { HeroSection,Service,BigNFTSlider,Subscribe,Title,Category,Filter,NFTCard,Collection,FollowerTab,AudioLive,Slider,  Brand,
+ } from '@/components/componentsIndex'
 
 const index = () => {
   return (
@@ -33,7 +34,7 @@ const index = () => {
         />
         <Category />
         <Subscribe />
-        
+        <Brand />
     </div>
   )
 }
