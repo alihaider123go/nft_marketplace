@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Style from '../styles/index.module.css'
-import { HeroSection,Service,BigNFTSlider,Subscribe,Title,Category,Filter,NFTCard,Collection,FollowerTab,AudioLive } from '@/components/componentsIndex'
+import { HeroSection,Service,BigNFTSlider,Subscribe,Title,Category,Filter,NFTCard,Collection,FollowerTab,AudioLive,Slider } from '@/components/componentsIndex'
 
 const index = () => {
   return (
@@ -19,6 +19,7 @@ const index = () => {
             paragraph="Discover the most outstanding NFTs in all topics of life."
         />
         <FollowerTab />
+        <Slider />
         <Collection />
         <Title
             heading="Featured NFTs"
