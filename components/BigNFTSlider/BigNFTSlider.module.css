@@ -16,7 +16,7 @@
     border-radius: 1rem;
     padding: 2rem;
     z-index: 1111;
-    height: 65vh;
+    /* height: 70vh; */
 }
 
 .bigNFTSlider_box_left h2{
@@ -182,6 +182,7 @@
 
     .bigNFTSlider_box_left{
         padding: 1.5rem;
+        height: auto;
     }
 
     .bigNFTSlider_box_right{
