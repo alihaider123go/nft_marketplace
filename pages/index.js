@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Style from '../styles/index.module.css'
-import { HeroSection,Service,BigNFTSlider,Subscribe } from '@/components/componentsIndex'
+import { HeroSection,Service,BigNFTSlider,Subscribe,Title } from '@/components/componentsIndex'
 
 const index = () => {
   return (
@@ -9,7 +9,12 @@ const index = () => {
         <HeroSection />
         <Service />
         <BigNFTSlider />
+        <Title
+            heading="Browse by category"
+            paragraph="Explore the NFTs in the most featured categories."
+        />
         <Subscribe />
+        
     </div>
   )
 }
