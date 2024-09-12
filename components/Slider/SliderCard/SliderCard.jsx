@@ -3,15 +3,13 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import Style from "./SliderCard.module.css";
-import images from "../../../img";
-import { LikeProfile } from "@/components/componentsIndex";
 const SliderCard = ({i,el}) => {
   return (
     <motion.div className={Style.sliderCard}>
       <div className={Style.sliderCard_box}>
         <motion.div className={Style.sliderCard_box_img}>
           <Image
-            src={images[`creatorbackground${i + 1}`]}
+            src={el.background}
             className={Style.sliderCard_box_img_img}
             alt="slider profile"
             width={400}
