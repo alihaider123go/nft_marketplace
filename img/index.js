@@ -42,6 +42,8 @@ import nft_image_3 from "./nft-image-3.png";
 import musiceWave from "./musicwave.png";
 import update from "./update.png";
 import earn from "./earn.png";
+import NFTVideo from "./nftvideo.png";
+
 export default {
   collection,
   update,
@@ -86,5 +88,6 @@ export default {
   vimeo,
   youtube,
   zgcmq,
-  earn
+  earn,
+  NFTVideo
 };
