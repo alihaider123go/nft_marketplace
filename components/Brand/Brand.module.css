@@ -2,8 +2,8 @@
 
 .Brand{
     width: 100%;
-    margin-top: 10rem;
-    margin-bottom: 7rem;
+    /* margin-top: 10rem; */
+    /* margin-bottom: 7rem; */
 }
 
 .Brand_box{
@@ -14,7 +14,7 @@
     grid-template-columns: 1.5fr 2fr;
     gap: 5rem;
     align-items: center;
-    padding:  8rem 0;
+    padding:  4rem 0;
 }
 
 .Brand_box_left h1{

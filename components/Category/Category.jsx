@@ -11,7 +11,6 @@ const Category = () => {
     images.creatorbackground11,
     images.creatorbackground2,
     images.creatorbackground4,
-    images.creatorbackground5,
   ];
   return (
     <div className={Style.box_category}>
