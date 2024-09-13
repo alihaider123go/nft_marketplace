@@ -53,6 +53,12 @@
     gap: 2rem;
 }
 
+.aboutus_box_hero_right{
+    max-width: 100%;
+    height: auto;
+}
+
+
 .aboutus_box_founder_box_img{
     background-color: var(--icons-color);
     color: var(--main-bg-color);
@@ -130,6 +136,11 @@
     .aboutus_box_facts_box_info h3{
         font-size: 2rem;
     }
+}
+.aboutus_box_hero_right_img{
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
 }
 
 @media screen and (min-width: 445px) and (max-width: 768px) {
