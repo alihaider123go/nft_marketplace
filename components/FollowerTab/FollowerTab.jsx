@@ -154,7 +154,7 @@ const FollowerTab = () => {
       {popular && (
         <div className={Style.followerTab_box}>
           {CardArray.map((el, i) => (
-            <FollowerTabCard key={i + 1} i={i} el={el} />
+            <FollowerTabCard key={'popular_CardArray_'+i + 1} i={i} el={el} />
           ))}
         </div>
       )}
@@ -162,7 +162,7 @@ const FollowerTab = () => {
       {following && (
         <div className={Style.followerTab_box}>
           {FollowingArray.map((el, i) => (
-            <FollowerTabCard key={i + 1} i={i} el={el} />
+            <FollowerTabCard key={'popular_FollowingArray_'+i + 1} i={i} el={el} />
           ))}
         </div>
       )}
@@ -170,7 +170,7 @@ const FollowerTab = () => {
       {news && (
         <div className={Style.followerTab_box}>
           {NewsArray.map((el, i) => (
-            <FollowerTabCard key={i + 1} i={i} el={el} />
+            <FollowerTabCard key={'popular_NewsArray_'+i + 1} i={i} el={el} />
           ))}
         </div>
       )}

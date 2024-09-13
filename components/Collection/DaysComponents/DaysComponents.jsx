@@ -16,34 +16,30 @@ const DaysComponents = ({i,el}) => {
             alt="profile background"
             width={400}
             height={200}
-            objectFit="covers"
           />
         </div>
 
         <div className={Style.daysComponent_box_profile}>
           <Image
-            src={images[`creatorbackground${Math.floor(Math.random() * 10) + 1}`]}
+            src={images.creatorbackground2}
             alt="profile"
             width={200}
             height={100}
             className={Style.daysComponent_box_img_1}
-            objectFit="covers"
           />
           <Image
-            src={images[`creatorbackground${Math.floor(Math.random() * 10) + 1}`]}
+            src={images.creatorbackground2}
             alt="profile"
             width={200}
             height={100}
             className={Style.daysComponent_box_img_2}
-            objectFit="covers"
           />
           <Image
-            src={images[`creatorbackground${Math.floor(Math.random() * 10) + 1}`]}
+            src={images.creatorbackground2}
             alt="profile"
             width={200}
             height={100}
             className={Style.daysComponent_box_img_3}
-            objectFit="covers"
           />
         </div>
 
@@ -56,7 +52,6 @@ const DaysComponents = ({i,el}) => {
                 alt="profile"
                 width={30}
                 height={30}
-                objectFit="covers"
                 className={Style.daysComponent_box_title_info_profile_img}
               />
 

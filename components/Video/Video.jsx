@@ -24,7 +24,6 @@ const Video = () => {
               alt="Video image"
               width={1920}
               height={1080}
-              objectFit="cover"
               className={Style.Video_box_frame_left_img}
             />
           </div>

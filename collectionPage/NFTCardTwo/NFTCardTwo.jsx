@@ -25,7 +25,7 @@ const NFTCardTwo = ({ NFTData }) => {
   return (
     <div className={Style.NFTCardTwo}>
       {NFTData.map((el, i) => (
-        <div className={Style.NFTCardTwo_box} key={i + 1}>
+        <div className={Style.NFTCardTwo_box} key={'NFTData_'+i}>
           <div className={Style.NFTCardTwo_box_like}>
             <div className={Style.NFTCardTwo_box_like_box}>
               <div className={Style.NFTCardTwo_box_like_box_box}>
@@ -45,7 +45,6 @@ const NFTCardTwo = ({ NFTData }) => {
               alt="NFT"
               width={500}
               height={500}
-              objectFit="cover"
               className={Style.NFTCardTwo_box_img_img}
             />
           </div>

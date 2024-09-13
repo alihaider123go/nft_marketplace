@@ -8,7 +8,7 @@ const NFTTabs = ({ dataTab, icon }) => {
   return (
     <div className={Style.NFTTabs}>
       {dataTab.map((el, i) => (
-        <div className={Style.NFTTabs_box} key={i + 1}>
+        <div className={Style.NFTTabs_box} key={'dataTab___'+i + 1}>
           <Image
             src={el}
             alt="profile image"

@@ -96,14 +96,14 @@ const AuthorNFTCardBox = ({
       {follower && (
         <div className={Style.AuthorNFTCardBox_box}>
           {followerArray.map((el, i) => (
-            <FollowerTabCard i={i} el={el} />
+            <FollowerTabCard key={'follower_FollowerTabCard_'+i} i={i} el={el} />
           ))}
         </div>
       )}
       {following && (
         <div className={Style.AuthorNFTCardBox_box}>
           {followingArray.map((el, i) => (
-            <FollowerTabCard i={i} el={el} />
+            <FollowerTabCard key={'following_FollowerTabCard_'+i} i={i} el={el} />
           ))}
         </div>
       )}

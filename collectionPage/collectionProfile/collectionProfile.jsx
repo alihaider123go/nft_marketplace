@@ -52,7 +52,7 @@ const collectionProfile = () => {
             {cardArray.map((el, i) => (
               <div
                 className={Style.collectionProfile_box_middle_box_item}
-                key={i + 1}
+                key={'cardArray_'+i}
               >
                 <small>Floor price</small>
                 <p>${i + 1}95,4683</p>

@@ -37,12 +37,12 @@ const connectWallet = () => {
               className={`${Style.connectWallet_box_provider_item} ${
                 activeBtn == i + 1 ? Style.active : ""
               }`}
-              key={i + 1}
+              key={'provider_wallet__'+i + 1}
               onClick={() => setActiveBtn(i + 1)}
             >
               <Image
                 src={el.provider}
-                alt={el.provider}
+                alt={el.name}
                 width={50}
                 height={50}
                 className={Style.connectWallet_box_provider_item_img}

@@ -49,7 +49,7 @@ const subscription = () => {
 
         <div className={Style.Subscription_box_box}>
           {subscriptionArray.map((el, i) => (
-            <Subscription key={i + 1} i={1} el={el} />
+            <Subscription key={'subscriptionArray__'+i + 1} i={1} el={el} />
           ))}
         </div>
       </div>

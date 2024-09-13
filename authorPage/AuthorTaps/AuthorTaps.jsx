@@ -123,7 +123,7 @@ const AuthorTaps = ({
             <div className={Style.AuthorTaps_box_right_list}>
               {listArray.map((el, i) => (
                 <div
-                  key={i + 1}
+                  key={'openList_'+i}
                   onClick={() => setSelectedMenu(el)}
                   className={Style.AuthorTaps_box_right_list_item}
                 >

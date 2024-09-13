@@ -71,7 +71,7 @@ const author = () => {
       />
       <div className={Style.author_box}>
         {followerArray.map((el, i) => (
-          <FollowerTabCard i={i} el={el} />
+          <FollowerTabCard key={"followerArray____" +i} i={i} el={el} />
         ))}
       </div>
 

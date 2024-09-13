@@ -18,7 +18,7 @@ const Subscription = ({ el, i }) => {
 
         <div className={Style.SubscriptionBox_box_info}>
           {el.service.map((el, i) => (
-            <p className={Style.SubscriptionBox_box_info_para} key={i + 1}>
+            <p className={Style.SubscriptionBox_box_info_para} key={'el.service__'+i + 1}>
               <span>
                 <TiTick />
               </span>

@@ -82,7 +82,7 @@ const Slider = () => {
             dragConstraints={{ right: 0, left: -width }}
           >
             {sliderArray.map((el, i) => (
-              <SliderCard key={i + 1} el={el} i={i} />
+              <SliderCard key={'sliderArray__'+i + 1} el={el} i={i} />
             ))}
           </motion.div>
         </motion.div>

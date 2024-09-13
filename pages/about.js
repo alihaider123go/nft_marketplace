@@ -56,7 +56,7 @@ const aboutus = () => {
             </p>
           </div>
           <div className={Style.aboutus_box_hero_right}>
-            <Image className={Style.aboutus_box_hero_right_img} src={images.hero2} width={600} height={400}/>
+            <Image alt="hero2" className={Style.aboutus_box_hero_right_img} src={images.hero2} width={600} height={400}/>
           </div>
         </div>
 
@@ -71,7 +71,7 @@ const aboutus = () => {
         <div className={Style.aboutus_box_founder}>
           <div className={Style.aboutus_box_founder_box}>
             {founderArray.map((el, i) => (
-              <div className={Style.aboutus_box_founder_box_img}>
+              <div className={Style.aboutus_box_founder_box_img} key={'founderArray__'+i}>
                 <Image
                   src={el.images}
                   alt={el.name}
@@ -97,7 +97,7 @@ const aboutus = () => {
         <div className={Style.aboutus_box_facts}>
           <div className={Style.aboutus_box_facts_box}>
             {factsArray.map((el, i) => (
-              <div className={Style.aboutus_box_facts_box_info}>
+              <div className={Style.aboutus_box_facts_box_info} key={'factsArray__'+i}>
                 <h3>{el.title}</h3>
                 <p>{el.info}</p>
               </div>
