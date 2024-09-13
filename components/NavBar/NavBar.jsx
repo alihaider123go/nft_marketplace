@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -10,6 +10,11 @@ import Style from "./NavBar.module.css"
 import {Discover,HelpCenter,Notification,Profile,SideBar} from './index'
 import { Button } from '../componentsIndex'
 import images from '../../img'
+
+import { NFTMarketplaceContext } from '@/context/NFTMarketplaceContext'
+
+
+
 const NavBar = () => {
 
     const [discover,setDiscover] = useState(false);
@@ -72,7 +77,7 @@ const NavBar = () => {
         }
     }
 
-
+    const {currentAccount,connectWallet} = useContext(NFTMarketplaceContext)
 
     return (
         <div className={Style.navbar}>
@@ -112,9 +117,19 @@ const NavBar = () => {
                         <MdNotifications className={Style.notify} onClick={()=>openNotification()} />
                         {notification && <Notification />}
                     </div>
+
                     <div className={Style.navbar_container_right_button}>
-                        <Button btnText="Create"/>
+                        { 
+                            currentAccount == "" ? (
+                                <Button btnText="Connect" handleClick={()=>connectWallet()}/> 
+                            ):(
+                                <Link href={{pathname:'/uploadNFT'}}>
+                                    <Button btnText="Create" handleClick={()=>{}}/>
+                                </Link>
+                            )
+                        }
                     </div>
+                    
                     <div className={Style.navbar_container_right_profile_box}>
                         <div className={Style.navbar_container_right_profile}>
                             <Image src={images.user1} alt="Profile" width={40} height={40} onClick={()=>openProfile()} className={Style.navbar_container_right_profile}/>
