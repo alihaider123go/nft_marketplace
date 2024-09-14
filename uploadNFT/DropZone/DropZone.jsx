@@ -7,23 +7,32 @@ import Style from "./DropZone.module.css";
 import images from "../../img";
 
 const DropZone = ({
-  title,
-  heading,
-  subHeading,
-  itemName,
-  website,
-  description,
-  royalties,
-  fileSize,
-  category,
-  properties,
-  image,
+    title,
+    heading,
+    subHeading,
+    name,
+    website,
+    description,
+    royalties,
+    fileSize,
+    category,
+    properties,
+    setImage,
 }) => {
   const [fileUrl, setFileUrl] = useState(null);
 
-  const onDrop = useCallback(async (acceptedFile) => {
-    setFileUrl(acceptedFile[0]);
-  });
+    const onDrop = useCallback(async (acceptedFile) => {
+        const file = acceptedFile[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            const base64String = reader.result;
+            setImage(base64String)
+            setFileUrl(base64String)
+        };
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
@@ -38,7 +47,7 @@ const DropZone = ({
           <p>{title}</p>
           <div className={Style.DropZone_box_input_img}>
             <Image
-              src={image}
+              src={images.upload}
               alt="upload"
               width={100}
               height={100}
@@ -54,7 +63,7 @@ const DropZone = ({
         <aside className={Style.DropZone_box_aside}>
           <div className={Style.DropZone_box_aside_box}>
             <Image
-              src={images.nft_image_1}
+              src={fileUrl}
               alt="nft image"
               width={200}
               height={200}
@@ -64,7 +73,7 @@ const DropZone = ({
               <div className={Style.DropZone_box_aside_box_preview_one}>
                 <p>
                   <samp>NFT Name:</samp>
-                  {itemName || ""}
+                  {name || ""}
                 </p>
                 <p>
                   <samp>Website:</samp>

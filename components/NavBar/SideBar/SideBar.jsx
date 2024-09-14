@@ -10,7 +10,7 @@ import images from '../../../img'
 import { Button } from '@/components/componentsIndex'
 
 
-const SideBar = ({setOpenSideMenu}) => {
+const SideBar = ({setOpenSideMenu,currentAccount,connectWallet}) => {
 
     const [openDiscover,setOpenDiscover] = useState(false);
     const [openHelp,setOpenHelp] = useState(false);
@@ -143,8 +143,15 @@ const SideBar = ({setOpenSideMenu}) => {
                 </div>
             </div>
             <div className={Style.sideBar_button}>
-                <Button btnText="Create" handleClick={()=>{}}/>
-                <Button btnText="Connect Wallet" handleClick={()=>{}}/>
+                { 
+                    currentAccount == "" ? (
+                        <Button btnText="Connect" handleClick={()=>connectWallet()}/> 
+                    ):(
+                        <Link href={{pathname:'/uploadNFT'}}>
+                            <Button btnText="Create" handleClick={()=>{}}/>
+                        </Link>
+                    )
+                }
             </div>
         </div>
     )

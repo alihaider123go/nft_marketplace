@@ -1,35 +1,31 @@
 import React, {useEffect,useState,useContext, Children} from 'react'
 import Web3Modal from 'web3modal';
 import {ethers} from 'ethers';
-import Router from "next/router"
+import { useRouter } from "next/router";
 import axios from 'axios';
-import {create as ipfsHttpClient} from "ipfs-http-client"
-
-const client = ipfsHttpClient("https:/ipfs.infura.io:5001/api/v0")
 
 import { NFTMarketplaceAddress,NFTMarketplaceABI } from './constants';
 
-// fetching Contract
 const fetchContract = (signerOrProvider)=> new ethers.Contract(NFTMarketplaceAddress,NFTMarketplaceABI,signerOrProvider);
-
-// Connecting with smart contract
 
 const connectionWithSmartContract = async()=>{
     try {
         const web3Modal = new Web3Modal();
         const connection = await web3Modal.connect();
-        const provider = new ethers.providers.Web3Provider(connection);
-        const signer = provider.getSigner();
+        const provider = new ethers.BrowserProvider(connection);
+        const signer = await provider.getSigner();
         const contract = fetchContract(signer);
         return contract;
     } catch (error) {
-        console.log("Something went wrong while connecting with contract");
+        console.log("Something went wrong while connecting with contract",error);
     }
 }
 
 export const NFTMarketplaceContext = React.createContext();
 
 export const NFTMarketplaceProvider = (({children})=>{
+
+    const router = useRouter();
 
     const [currentAccount, setCurrentAccount] = useState("")
     const checkIfWalletConnected = async ()=>{
@@ -50,10 +46,6 @@ export const NFTMarketplaceProvider = (({children})=>{
         }
     }   
 
-    // useEffect(()=>{
-    //     checkIfWalletConnected()
-    // },[])
-
     const connectWallet = async () => {
         try {
             if (!window.ethereum) {
@@ -61,7 +53,6 @@ export const NFTMarketplaceProvider = (({children})=>{
             }
             const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
             setCurrentAccount(accounts[0]);
-            // window.location.reload();
         } catch (error) {
             console.log("Error while connecting to wallet", error);
         }
@@ -70,30 +61,36 @@ export const NFTMarketplaceProvider = (({children})=>{
     const uploadToIPFS = async (file)=>{
         try {
             const added = await client.add({content:file});
-            const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+            const url = `${subdomain}/ipfs/${added.path}`;
             return url;
         } catch (error) {
-            console.log("Error while uploading file");
+            console.log("Error while uploading file", error);
         }
     }
 
-    const createNFT = async (formInput,fileUrl,router)=>{
-        const {name,description,price} = formInput;
-        if(!name || !description || !price || !fileUrl) return console.log("Data is missing")
-        const data = JSON.stringify({name,description,image:fileUrl})
+
+    const createTokenURI = (metadata) => {
+        const jsonString = JSON.stringify(metadata);
+        const base64EncodedData = btoa(jsonString);
+        return `data:application/json;base64,${base64EncodedData}`;
+    };
+
+
+
+    const createNFT = async (name,price,image,description,router)=>{
+        if(!name || !description || !price || !image) return console.log("Data is missing")
         try {
-            const added = await client.add(data);
-            const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+            const url = createTokenURI({name,description,image});
             await createSale(url,price);
         } catch (error) {
-            console.log("Error while creating NFT");
+            console.log("Error while creating NFT",error);
         }
     }
 
 
-    const createSale = async (url,formInputPrice,isReselling,id)=>{
+    const createSale = async(url,formInputPrice,isReselling,id)=>{
         try {
-            const price = ethers.utils.parseUnits(formInputPrice, 'ether');
+            const price = ethers.parseUnits(formInputPrice, 'ether');
             const contract = await connectionWithSmartContract();
             const listingPrice = await contract.getListingPrice();
             const transaction = !isReselling 
@@ -101,8 +98,9 @@ export const NFTMarketplaceProvider = (({children})=>{
                 : await contract.reSellToken(url,price,{value:listingPrice.toString()})
             
             await transaction.wait();
+            router.push('/search')
         } catch (error) {
-            console.log("Error while creating sale");
+            console.log("Error while creating sale", error);
         }
     }
 
@@ -117,7 +115,7 @@ export const NFTMarketplaceProvider = (({children})=>{
                 const {
                     data:{image,name,description},
                 } = await axios.get(tokenURI)
-                const price = ethers.utils.formatUnits(unformattedPrice.toString(),'ether');
+                const price = ethers.formatUnits(unformattedPrice.toString(),'ether');
                 return {
                     price,tokenId:tokenId.toNumber(),seller,owner,image,name,description,tokenURI
                 }
@@ -140,7 +138,7 @@ export const NFTMarketplaceProvider = (({children})=>{
                 const {
                     data:{image,name,description},
                 } = await axios.get(tokenURI)
-                const price = ethers.utils.formatUnits(unformattedPrice.toString(),'ether');
+                const price = ethers.formatUnits(unformattedPrice.toString(),'ether');
                 return {
                     price,tokenId:tokenId.toNumber(),seller,owner,image,name,description,tokenURI
                 }
@@ -155,7 +153,7 @@ export const NFTMarketplaceProvider = (({children})=>{
     const buyNFT = async(nft)=>{
         try {
             const contract = await connectionWithSmartContract();
-            const price  = ethers.utils.parseUnits(nft.price.toString(),'ether');
+            const price  = ethers.parseUnits(nft.price.toString(),'ether');
             const transaction = await contract.createMarketSale(nft.tokenId, {value:price});
             await transaction.wait();
             
