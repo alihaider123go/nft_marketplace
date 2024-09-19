@@ -10,6 +10,7 @@ import {
 import { BsThreeDots } from "react-icons/bs";
 import { FaWallet, FaPercentage } from "react-icons/fa";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import {
   TiSocialFacebook,
   TiSocialLinkedin,
@@ -36,6 +37,7 @@ const NFTDescription = ({nft}) => {
   const [provanance, setProvanance] = useState(false);
   const [owner, setOwner] = useState(false);
 
+const router = useRouter()
   const historyArray = [
     images.user1,
     images.user2,
@@ -264,7 +266,7 @@ const {buyNFT,currentAccount} = useContext(NFTMarketplaceContext)
                     <Button
                         icon=<FaWallet />
                         btnText="List on MarketPlace"
-                        handleClick={() => {}}
+                        handleClick={() => router.push(`/resell-token?id=${nft.tokenId}&tokenURI=${nft.tokenURI}`)}
                         classStyle={Style.button}
                     />
               ) :(
@@ -279,7 +281,7 @@ const {buyNFT,currentAccount} = useContext(NFTMarketplaceContext)
                 <Button
                     icon=<FaPercentage />
                     btnText="Make offer"
-                    handleClick={() => {}}
+                    handleClick={() => router.push(`/resell-token?id=${nft.tokenId}&tokenURI=${nft.tokenURI}`)}
                     classStyle={Style.button}
                 />
               

@@ -82,6 +82,7 @@ export const NFTMarketplaceProvider = (({children})=>{
         try {
             const url = createTokenURI({name,description,image});
             await createSale(url,price);
+            router.push('/search')
         } catch (error) {
             console.log("Error while creating NFT",error);
         }
@@ -95,10 +96,9 @@ export const NFTMarketplaceProvider = (({children})=>{
             const listingPrice = await contract.getListingPrice();   
             const transaction = !isReselling 
                 ? await contract.createToken(url,price,{value:listingPrice.toString()})
-                : await contract.reSellToken(url,price,{value:listingPrice.toString()})
+                : await contract.reSellToken(id,price,{value:listingPrice.toString()})
             
             await transaction.wait();
-            router.push('/search')
         } catch (error) {
             console.log("Error while creating sale", error);
         }
@@ -166,7 +166,7 @@ export const NFTMarketplaceProvider = (({children})=>{
 
 
     return (
-        <NFTMarketplaceContext.Provider value={{currentAccount,checkIfWalletConnected,connectWallet,uploadToIPFS,createNFT,fetchNFTs,fetchMyNFTsOrListedNFTs,buyNFT}}>
+        <NFTMarketplaceContext.Provider value={{currentAccount,checkIfWalletConnected,connectWallet,uploadToIPFS,createNFT,fetchNFTs,fetchMyNFTsOrListedNFTs,buyNFT,createSale}}>
             {children}
         </NFTMarketplaceContext.Provider>
     )
