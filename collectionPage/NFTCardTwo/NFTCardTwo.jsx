@@ -3,7 +3,7 @@ import Image from "next/image";
 import { BsImage } from "react-icons/bs";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { MdVerified, MdTimer } from "react-icons/md";
-
+import Link from "next/link";
 import Style from "./NFTCardTwo.module.css";
 
 import { LikeProfile } from "@/components/componentsIndex";
@@ -25,6 +25,7 @@ const NFTCardTwo = ({ NFTData }) => {
   return (
     <div className={Style.NFTCardTwo}>
       {NFTData.map((el, i) => (
+        <Link href={{pathname:'/NFT-details', query:el}} key={'NFTData_Link_'+i}>
         <div className={Style.NFTCardTwo_box} key={'NFTData_'+i}>
           <div className={Style.NFTCardTwo_box_like}>
             <div className={Style.NFTCardTwo_box_like_box}>
@@ -67,6 +68,7 @@ const NFTCardTwo = ({ NFTData }) => {
             </p>
           </div>
         </div>
+        </Link>
       ))}
     </div>
   );

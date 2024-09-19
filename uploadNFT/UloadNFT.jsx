@@ -78,6 +78,7 @@ const router = useRouter();
             placeholder="shoaib bhai"
             className={formStyle.Form_box_input_userName}
             onChange={(e) => setName(e.target.value)}
+            value={name}
           />
         </div>
 
@@ -111,6 +112,7 @@ const router = useRouter();
             rows="6"
             placeholder="something about yourself in few words"
             onChange={(e) => setDescription(e.target.value)}
+            value={description}
           ></textarea>
           <p>
             The description will be included on the item's detail page
@@ -203,6 +205,7 @@ const router = useRouter();
                         type="text"
                         placeholder="Price"
                         onChange={(e) => setPrice(e.target.value)}
+                        value={price}
                     />
                 </div>
             </div>
