@@ -30,9 +30,9 @@ const {fetchNFTs} = useContext(NFTMarketplaceContext);
     }
 
     const onClearSearch = () => {
-        // if(nfts.length && nftsCopy.length){
+        if(nfts.length && nftsCopy.length){
             setNfts(nftsCopy);
-        // }
+        }
     }
 
 

@@ -18,16 +18,14 @@ import Style from "./AuthorProfileCard.module.css";
 import images from "../../img";
 import { Button } from "../../components/componentsIndex.js";
 
-const AuthorProfileCard = () => {
+const AuthorProfileCard = ({currentAccount}) => {
   const [share, setShare] = useState(false);
   const [report, setReport] = useState(false);
 
   //copyAddress function
   const copyAddress = () => {
-    const copyText = document.getElementById("myInput");
-
-    copyText.select();
-    navigator.clipboard.writeText(copyText.value);
+    const copyText = document.getElementById("author-address").innerHTML;
+    navigator.clipboard.writeText(copyText);
   };
 
   const openShare = () => {
@@ -70,12 +68,8 @@ const AuthorProfileCard = () => {
           </h2>
 
           <div className={Style.AuthorProfileCard_box_info_address}>
-            <input
-              type="text"
-              value="0x829BD824B03D092293333..A830"
-              id="myInput"
-            />
-            <FiCopy
+            <span id="author-address">{currentAccount}</span>
+            &nbsp;<FiCopy
               onClick={() => copyAddress()}
               className={Style.AuthorProfileCard_box_info_address_icon}
             />

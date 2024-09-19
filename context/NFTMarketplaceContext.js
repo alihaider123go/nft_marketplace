@@ -109,7 +109,7 @@ export const NFTMarketplaceProvider = (({children})=>{
         try {
             const provider = new ethers.JsonRpcProvider();
             const contract = fetchContract(provider);
-            const data = await contract.fetchMarketItem();
+            const data = await contract.fetchMarketItems();
             const items = await Promise.all(data.map(async({tokenId,seller,owner,price:unformattedPrice})=>{
                 const tokenURI = await contract.tokenURI(tokenId);
                 const {
@@ -127,24 +127,25 @@ export const NFTMarketplaceProvider = (({children})=>{
     }
 
     const fetchMyNFTsOrListedNFTs  = async(type) => {
+        
         try {
             const contract = await connectionWithSmartContract();
             const data = type == 'myNFTs' 
-                ? await contract.fetchMyNFT()
-                : await contract.fetchItemsListed();
+                ? await contract.fetchMyNFTs()
+                : await contract.fetchListedItems();
             const items = await Promise.all(data.map(async({tokenId,seller,owner,price:unformattedPrice})=>{
-                const tokenURI = await contract.tokenURL(tokenId);
+                const tokenURI = await contract.tokenURI(tokenId);
                 const {
                     data:{image,name,description},
                 } = await axios.get(tokenURI)
                 const price = ethers.formatUnits(unformattedPrice.toString(),'ether');
                 return {
-                    price,tokenId:tokenId.toNumber(),seller,owner,image,name,description,tokenURI
+                    price,tokenId:tokenId.toString(),seller,owner,image,name,description,tokenURI
                 }
             }))
             return items;
         } catch (error) {
-            console.log("Error while fetching my NFTs")
+            console.log("Error while fetching my NFTs", error)
         }
     }
 
