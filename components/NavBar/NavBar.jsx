@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import {MdNotifications} from 'react-icons/md'
 import {BsSearch} from 'react-icons/bs'
 import {CgMenuLeft,CgMenuRight} from "react-icons/cg"
-
+// import {DiJqueryLogo} from 'react-icons/di'
 import Style from "./NavBar.module.css"
 import {Discover,HelpCenter,Notification,Profile,SideBar} from './index'
 import { Button } from '../componentsIndex'
@@ -87,7 +87,9 @@ const NavBar = () => {
                 
                 <div className={Style.navbar_container_left}>
                     <div className={Style.logo}>
+                    <a href='/'>
                         <Image src={images.logo} alt="NFT Market Place" width={100} height={100}/>
+                    </a>
                     </div>
                     <div className={Style.navbar_container_left_box_input}>
                         <div className={Style.navbar_container_left_box_input_box}>
@@ -133,7 +135,7 @@ const NavBar = () => {
                     <div className={Style.navbar_container_right_profile_box}>
                         <div className={Style.navbar_container_right_profile}>
                             <Image src={images.user1} alt="Profile" width={40} height={40} onClick={()=>openProfile()} className={Style.navbar_container_right_profile}/>
-                            {profile && <Profile />}
+                            {profile && <Profile currentAccount={currentAccount}/>}
                         </div>
                     </div>
 
