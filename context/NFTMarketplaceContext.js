@@ -127,7 +127,6 @@ export const NFTMarketplaceProvider = (({children})=>{
     }
 
     const fetchMyNFTsOrListedNFTs  = async(type) => {
-        
         try {
             const contract = await connectionWithSmartContract();
             const data = type == 'myNFTs' 
@@ -156,6 +155,7 @@ export const NFTMarketplaceProvider = (({children})=>{
             const price  = ethers.parseUnits(nft.price.toString(),'ether');
             const transaction = await contract.createMarketSale(nft.tokenId, {value:price});
             await transaction.wait();
+            router.push('/author')
             
         } catch (error) {
             console.log("Error while buying NFT")

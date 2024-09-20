@@ -61,11 +61,11 @@ useEffect(() => {
 }, []);
 
 useEffect(() => {
-  fetchMyNFTsOrListedNFTs("listedNFTs").then((items)=>{
-    setNfts(items);
-  }).catch((error)=>{
-    console.log(error)
-  });
+    fetchMyNFTsOrListedNFTs("listedNFTs").then((items)=>{
+        setNfts(items);
+    }).catch((error)=>{
+        console.log(error)
+    });
 }, []);
 
 
