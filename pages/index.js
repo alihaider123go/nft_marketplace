@@ -4,11 +4,14 @@ import Style from '../styles/index.module.css'
 import { HeroSection,Service,BigNFTSlider,Subscribe,Title,Category,Filter,NFTCard,Collection,FollowerTab,AudioLive,Slider,  Brand,Video
  } from '@/components/componentsIndex'
 import { NFTMarketplaceContext } from "@/context/NFTMarketplaceContext";
-
+import { getTopCreators } from '@/topCreators/TopCreators';
 const index = () => {
     const [nfts, setNfts] = useState([])
     const [nftsCopy, setNftsCopy] = useState([])
     const {fetchNFTs} = useContext(NFTMarketplaceContext);
+    
+    const creators = getTopCreators(nfts);
+    
     useEffect(() => {
         fetchNFTs().then((item)=>{
             setNfts(item.reverse());
@@ -29,7 +32,7 @@ const index = () => {
             heading="New Collection"
             paragraph="Discover the most outstanding NFTs in all topics of life."
         />
-        <FollowerTab />
+        <FollowerTab TopCreator ={creators}/>
         <Slider />
         <Collection />
         <Title
